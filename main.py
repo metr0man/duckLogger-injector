@@ -9,7 +9,7 @@ NUM_LEDS = 1
 np = neopixel.NeoPixel(Pin(PIN_NUM), NUM_LEDS)
 
 for _ in range(5):
-    np[0] = (0, 255, 0)  # ON (white)
+    np[0] = (0, 255, 0)  # ON
     np.write()
     time.sleep(0.2)
 
@@ -29,7 +29,7 @@ uart = UART(1, baudrate=115200, tx=Pin(2), rx=Pin(1) )
 
 buffer = UARTBuffer(uart)
 led = KeyboardLED(uart)
-log = Log(50000, led) # flush to file when there's 20,000 char in the buffer
+log = Log(20_000, led) # flush to file when there's 20,000 char in the buffer
 kbd = Keyboard()
 
 
@@ -58,6 +58,5 @@ async def main():
 
         last_activity = time.ticks_ms()
 
-     
 
 asyncio.run(main())
