@@ -1,0 +1,4 @@
+1. Micropython USB: https://github.com/micropython/micropython-lib/tree/master/micropython/usb
+2. KeyCode class: https://github.com/micropython/micropython-lib/blob/master/micropython/usb/usb-device-keyboard/usb/device/keyboard.py#L118
+3. mpremote: https://docs.micropython.org/en/latest/reference/mpremote.html#mpremote-command-mip
+4. Package Management: https://docs.micropython.org/en/latest/reference/packages.html#packages
