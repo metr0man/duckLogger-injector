@@ -31,9 +31,21 @@ http://192.168.4.1/
 
 ## 1. Schematics
 
-(To be updated)
+<img width="2851" height="810" alt="image" src="https://github.com/user-attachments/assets/42f63b02-d19f-4c31-832d-3051c3bb02d1" />
 
 
+| ESP32-S3 | CH9350 |
+| -------- | ------ |
+| 5V       | 5V     |
+| GND      | GND    |
+| GP1      | TX     |
+| GP2      | RX     |
+
+The CH9350 supports multiple operating modes, which are configured using the onboard DIP switches.
+
+<img width="819" height="627" alt="image" src="https://github.com/user-attachments/assets/d8060d39-abb1-4d92-9ce8-8e2043ad1c0b" />
+
+Set `S0` to the GND position (0) and keep all other switches in the opposite position (1). This enables USB Host Mode, which converts USB keyboard inputs into serial data sent via UART at a default baud rate of 115200.
 
 ## 2. Flash MicroPython
 
