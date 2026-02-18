@@ -83,9 +83,9 @@ Install required packages directly onto the board:
 ```bash
 mpremote mip install usb-device
 mpremote mip install usb-device-keyboard
-mpremote mip install microdot
 ```
-
+duckLogger uses `microdot` to serve the web UI. 
+Install microdot, find installation guide [here](https://microdot.readthedocs.io/en/latest/intro.html#micropython-installation)
 
 
 ## 5. Install DuckLogger on the Board
