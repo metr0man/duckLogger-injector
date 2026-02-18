@@ -2,9 +2,8 @@
 
 <img width="2559" height="1060" alt="image" src="https://github.com/user-attachments/assets/d3178370-de53-4aaa-916b-64b3155cc503" />
 
-## Overview
-
-DuckLogger is an ESP32-S3–based USB Key Logger. It logs keystrokes, log them in a text file, and provides wireless access to download logs through a built-in Wi-Fi access point.
+DuckLogger is an ESP32-S3–based USB Key Logger. It logs keystrokes in a text file, and provides wireless access to download logs through a built-in Wi-Fi access point.
+Recreating this project doesn't require any custom PCB. Hardware used here is less than $10 in total on places like Aliexpress.
 
 <img width="2560" height="1440" alt="ducklogger" src="https://github.com/user-attachments/assets/f5aa82a2-3fc4-450a-a6cb-c52042ec13ce" />
 
@@ -13,11 +12,18 @@ DuckLogger is an ESP32-S3–based USB Key Logger. It logs keystrokes, log them i
 
 1. Records keystrokes and saves them to a log file in internal flash storage
 2. Automatically creates a Wi-Fi Access Point
-3. Serves the log file over HTTP at:
+3. Download log file from web UI at:
 
 ```
 http://192.168.4.1/
 ```
+
+Upcoming:
+
+4. Send Ducky scripts from the web UI
+5. Remote keyboard control via browser
+
+
 
 ## Components Used
 
@@ -64,13 +70,11 @@ On your development machine:
 pip install mpremote
 ```
 
-Verify that your board is detected:
+Connect your board with a USB cable  and verify that it's detected:
 
 ```bash
 mpremote connect list
 ```
-
-
 
 ## 4. Install Required MicroPython Packages
 
