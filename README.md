@@ -70,7 +70,7 @@ On your development machine:
 pip install mpremote
 ```
 
-Connect your board with a USB cable  and verify that it's detected:
+Verify that your board is detected:
 
 ```bash
 mpremote connect list
@@ -84,8 +84,6 @@ Install required packages directly onto the board:
 mpremote mip install usb-device
 mpremote mip install usb-device-keyboard
 ```
-duckLogger uses `microdot` to serve the web UI. 
-Install microdot, find installation guide [here](https://microdot.readthedocs.io/en/latest/intro.html#micropython-installation)
 
 
 ## 5. Install DuckLogger on the Board
@@ -99,7 +97,7 @@ cd duckLogger
 
 Make sure your board is connected via USB.
 
-### Copy all ducklogger library files to `/lib` on the device
+### Copy all library files to `/lib` on the device
 
 ```bash
 mpremote cp lib/*.py :/lib/
@@ -146,8 +144,14 @@ to download the log file.
 │   ├── keyboard.py
 │   ├── key_led.py
 │   ├── logger.py
+│   ├── microdot.py
 │   └── uart_buffer.py
 ├── main.py
 ├── README.md
 └── resources.md
 ```
+
+## Third-Party Libraries
+
+This project includes Microdot by Miguel Grinberg (MIT License):  
+https://github.com/miguelgrinberg/microdot
