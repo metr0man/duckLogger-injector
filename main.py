@@ -24,6 +24,7 @@ from key_led import KeyboardLED
 from logger import Log
 from keyboard import Keyboard
 import asyncio
+import injector
 
 uart = UART(1, baudrate=115200, tx=Pin(2), rx=Pin(1) )
 
@@ -32,13 +33,12 @@ led = KeyboardLED(uart)
 log = Log(20_000, led) # flush to file when there's 20,000 char in the buffer
 kbd = Keyboard()
 
-is_injecting = False  # set True while a Ducky Script injection sequence is active
-
 # api
 from access_point import AccessPoint
-from api import app
+from api import app, init as api_init
 ap = AccessPoint("duckLogger", "duckPass1234")
 ap.start()
+api_init(kbd, led)
 
 async def main():
     server_task = asyncio.create_task(app.start_server(host="0.0.0.0", port=80))
@@ -57,7 +57,7 @@ async def main():
 
         frame = await buffer.get_frame()
 
-        if is_injecting:
+        if injector.is_injecting:
             # Physical keyboard frames arriving during injection are dropped to
             # prevent interleaving with injected USB HID output.
             await asyncio.sleep(0)
